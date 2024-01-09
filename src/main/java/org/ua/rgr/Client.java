@@ -67,6 +67,7 @@ public class Client {
                 System.out.println("Received Server ready signal ");
                 out.writeObject(sessionEncryptCipher.doFinal("Example message".getBytes()));
                 out.flush();
+                System.out.println("Sent Example message");
                 out.writeObject(sessionEncryptCipher.doFinal("Stop".getBytes()));
                 out.flush();
             }
@@ -74,6 +75,7 @@ public class Client {
             out.close();
             in.close();
             socket.close();
+            System.out.println("Stopped connection");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
