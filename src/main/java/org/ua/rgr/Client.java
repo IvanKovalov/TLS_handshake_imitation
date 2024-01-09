@@ -2,9 +2,10 @@ package org.ua.rgr;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
@@ -37,7 +38,6 @@ public class Client {
             cipher.init(Cipher.ENCRYPT_MODE, serverPublicKey);
             byte[] secretMessage = new byte[8];
             random.nextBytes(secretMessage);
-          //  String secretMessage = "Secret Premaster";
             byte[] encryptedSecret = cipher.doFinal(secretMessage);
 
             // Send encrypted secret premaster to server
